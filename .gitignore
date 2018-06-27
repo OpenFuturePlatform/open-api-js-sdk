@@ -1,6 +1,8 @@
-# dependencies
-/node_modules
-
-/.idea
-
-/dist
+.idea/
+build/
+out/
+.gradle/
+*.iml
+*.db
+node_modules
+dist
