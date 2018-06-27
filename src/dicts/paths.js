@@ -11,6 +11,11 @@ const Paths = {
     Deploy: base('/scaffolds/doDeploy'),
     SetWebhook: (address) => base(`/scaffolds/${address}`),
     GetQuota: base('/scaffolds/quota')
+  },
+  ShareHolder: {
+    Add: (address) => base(`/scaffolds/${address}/holders`),
+    Update: (address) => base(`/scaffolds/${address}/holders`),
+    Remove: (address) => base(`/scaffolds/${address}/holders`),
   }
 }
 
