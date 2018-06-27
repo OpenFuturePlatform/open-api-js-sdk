@@ -1,6 +1,7 @@
-import 'babel-polyfill'
-import Paths from '../dicts/paths'
+import 'babel-polyfill';
+import Paths from '../dicts/paths';
 import {api} from '../configs';
+import {addressValidation} from '../helpers/validators';
 
 export default class Scaffold {
   constructor(openKey = '') {
@@ -17,6 +18,10 @@ export default class Scaffold {
   }
 
   async getScaffold(address) {
+    const errors = addressValidation(address);
+    if (errors.length !==0) {
+      return errors;
+    };
     try {
       const result = await this.api.get(Paths.Scaffold.GetItem(address));
       return result.data;
@@ -26,6 +31,10 @@ export default class Scaffold {
   }
 
   async getSummary(address) {
+    const errors = addressValidation(address);
+    if (errors.length !==0) {
+      return errors;
+    };
     try {
       const result = await this.api.get(Paths.Scaffold.GetSummary(address));
       return result.data;
@@ -35,6 +44,10 @@ export default class Scaffold {
   }
 
   async getTransactions(address) {
+    const errors = addressValidation(address);
+    if (errors.length !==0) {
+      return errors;
+    };
     try {
       const result = await this.api.get(Paths.Scaffold.GetTransactions(address));
       return result.data;
@@ -57,6 +70,10 @@ export default class Scaffold {
   }
 
   async setWebhook(address, data) {
+    const errors = addressValidation(address);
+    if (errors.length !==0) {
+      return errors;
+    };
     try {
       const result = await this.api.patch(Paths.Scaffold.SetWebhook(address), data, {
         headers: {

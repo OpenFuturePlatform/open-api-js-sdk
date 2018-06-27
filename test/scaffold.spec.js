@@ -19,13 +19,13 @@ const request = new Scaffold(OPEN_KEY)
 //   expect(result).not.to.have.property('error');
 // });
 //
-// it("Get scaffold by id", async function() {
-//   const result = await request.getScaffold(SCAFFOLD_ADDRESS);
-//   console.log(`scaffold '${SCAFFOLD_ADDRESS}'`, result);
-//
-//   expect(result).to.be.a('object');
-//   expect(result).not.to.have.property('error');
-// });
+it("Get scaffold by id", async function() {
+  const result = await request.getScaffold(SCAFFOLD_ADDRESS);
+  console.log(`scaffold '${SCAFFOLD_ADDRESS}'`, result);
+
+  expect(result).to.be.a('object');
+  expect(result).not.to.have.property('error');
+});
 // //
 // // it("Get scaffold summary", async function() {
 // //   const result = await request.getSummary(SCAFFOLD_ADDRESS);

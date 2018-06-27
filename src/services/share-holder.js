@@ -1,6 +1,7 @@
-import 'babel-polyfill'
-import Paths from '../dicts/paths'
+import 'babel-polyfill';
+import Paths from '../dicts/paths';
 import {api} from '../configs';
+import {addressValidation} from '../helpers/validators';
 
 export default class ShareHolder {
   constructor(openKey = '') {
@@ -8,6 +9,10 @@ export default class ShareHolder {
   }
 
   async addShareHolder(address, data) {
+    const errors = addressValidation(address);
+    if (errors.length !==0) {
+      return errors;
+    };
     try {
       const result = await this.api.post(Paths.ShareHolder.Add(address), data, {
         headers: {
@@ -21,6 +26,10 @@ export default class ShareHolder {
   }
 
   async updateShareHolder(address, data) {
+    const errors = addressValidation(address);
+    if (errors.length !==0) {
+      return errors;
+    };
     try {
       const result = await this.api.put(Paths.ShareHolder.Update(address), data, {
         headers: {
@@ -34,6 +43,10 @@ export default class ShareHolder {
   }
 
   async removeShareHolder(address, data) {
+    const errors = addressValidation(address);
+    if (errors.length !==0) {
+      return errors;
+    };
     try {
       const result = await this.api.delete(Paths.ShareHolder.Remove(address), data, {
         headers: {
