@@ -8,6 +8,6 @@ export const configuration = Object.freeze (
 )
 
 export const api = (openKey) => axios.create({
-  baseURL: 'http://localhost:8080',
+  baseURL: 'https://api.openfuture.io',
   headers: {'Authorization': openKey}
 });
