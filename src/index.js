@@ -69,6 +69,19 @@ export default class OpenJs {
     }
   }
 
+  async deactivateScaffold(address) {
+    const errors = addressValidation(address);
+    if (errors.length !==0) {
+      return errors;
+    };
+    try {
+      const result = await this.api.delete(Paths.Scaffold.Deactivate(address));
+      return result.data;
+    } catch (error) {
+      return error.response.data;
+    }
+  }
+
   async setWebhook(address, data) {
     const errors = addressValidation(address);
     if (errors.length !==0) {
@@ -112,13 +125,14 @@ export default class OpenJs {
     }
   }
 
-  async updateShareHolder(address, data) {
-    const errors = addressValidation(address);
-    if (errors.length !==0) {
-      return errors;
+  async updateShareHolder(address, holderAddress, data) {
+    const addressErrors = addressValidation(address);
+    const holderAddressErrors = addressValidation(holderAddress);
+    if (addressErrors.length !==0 || holderAddressErrors.length !==0) {
+      return [...addressErrors, ...holderAddressErrors];
     };
     try {
-      const result = await this.api.put(Paths.ShareHolder.Update(address), data, {
+      const result = await this.api.put(Paths.ShareHolder.Update(address, holderAddress), data, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -129,17 +143,14 @@ export default class OpenJs {
     }
   }
 
-  async removeShareHolder(address, data) {
-    const errors = addressValidation(address);
-    if (errors.length !==0) {
-      return errors;
+  async removeShareHolder(address, holderAddress) {
+    const addressErrors = addressValidation(address);
+    const holderAddressErrors = addressValidation(holderAddress);
+    if (addressErrors.length !==0 || holderAddressErrors.length !==0) {
+      return [...addressErrors, ...holderAddressErrors];
     };
     try {
-      const result = await this.api.delete(Paths.ShareHolder.Remove(address), data, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+      const result = await this.api.delete(Paths.ShareHolder.Remove(address, holderAddress));
       return result.data;
     } catch (error) {
       return error.response.data;

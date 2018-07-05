@@ -9,13 +9,14 @@ const Paths = {
     GetSummary: (address) => base(`/scaffolds/${address}/summary`),
     GetTransactions: (address) => base(`/scaffolds/${address}/transactions`),
     Deploy: base('/scaffolds/doDeploy'),
+    Deactivate: (address) => base(`/scaffolds/${address}`),
     SetWebhook: (address) => base(`/scaffolds/${address}`),
     GetQuota: base('/scaffolds/quota')
   },
   ShareHolder: {
     Add: (address) => base(`/scaffolds/${address}/holders`),
-    Update: (address) => base(`/scaffolds/${address}/holders`),
-    Remove: (address) => base(`/scaffolds/${address}/holders`),
+    Update: (address, holderAddress) => base(`/scaffolds/${address}/holders/${holderAddress}`),
+    Remove: (address, holderAddress) => base(`/scaffolds/${address}/holders/${holderAddress}`),
   }
 }
 

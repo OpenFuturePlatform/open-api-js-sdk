@@ -1,5 +1,7 @@
 {
-  "name": "js-sdk",
+  "name": "openjs",
+  "exportName": "OpenJs",
+  "description": "OpenJs is a library for interactions with Open Platform.",
   "version": "1.0.0",
   "scripts": {
     "build": "webpack --env dev && webpack --env build",
@@ -7,7 +9,7 @@
     "test": "mocha --require babel-core/register --colors ./test/*.spec.js",
     "test:watch": "mocha --require babel-core/register --colors -w ./test/*.spec.js"
   },
-  "private": true,
+  "main": "dist/main.js",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -26,5 +28,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
   }
 }

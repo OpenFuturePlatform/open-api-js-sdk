@@ -8,8 +8,7 @@ const request = new OpenJs(OPEN_KEY)
 
 it("Get all scaffolds", async function() {
   const result = await request.getScaffolds();
-  console.log('scaffolds', result);
-
+console.log(result.totalCount)
   expect(result).to.be.a('object');
   expect(result).to.have.property('totalCount');
   expect(result).to.have.property('list');
@@ -21,7 +20,6 @@ it("Get all scaffolds", async function() {
 
 it("Get scaffold by id", async function() {
   const result = await request.getScaffold(SCAFFOLD_ADDRESS);
-  console.log(`scaffold '${SCAFFOLD_ADDRESS}'`, result);
 
   expect(result).to.be.a('object');
   expect(result).not.to.have.property('error');
@@ -29,7 +27,6 @@ it("Get scaffold by id", async function() {
 
 it("Get scaffold summary", async function() {
   const result = await request.getSummary(SCAFFOLD_ADDRESS);
-  console.log(`scaffold '${SCAFFOLD_ADDRESS}' summary`, result);
 
   expect(result).to.be.a('object');
   expect(result).not.to.have.property('error');
@@ -37,7 +34,6 @@ it("Get scaffold summary", async function() {
 
 it("Get scaffold transactions", async function() {
   const result = await request.getTransactions(SCAFFOLD_ADDRESS);
-  console.log(`scaffold '${SCAFFOLD_ADDRESS}' summary`, result);
 
   expect(result).to.be.a('object');
   expect(result).to.have.property('totalCount');
@@ -76,9 +72,18 @@ it("Deploy scaffold", async function() {
   expect(result).not.to.have.property('error');
 });
 
+it("Deactivate scaffold", async function(done) {
+  const result = await request.deactivateScaffold(SCAFFOLD_ADDRESS);
+  done(result)
+  console.log(`deactivate scaffold`, result);
+
+  expect(result).to.be.a('object');
+  expect(result).not.to.have.property('error');
+});
+
 it("Set webhook", async function() {
   const data = {
-    webHook: "https://zensoft.io"
+    webHook: "https://zensoft.io/random-string"
   };
   const result = await request.setWebhook(SCAFFOLD_ADDRESS, data);
   console.log(`Set webhook`, result);
@@ -89,7 +94,6 @@ it("Set webhook", async function() {
 
 it("Get quota", async function() {
   const result = await request.getQuota();
-  console.log(`Get quota`, result);
 
   expect(result).to.be.a('object');
   expect(result).to.have.property('currentCount');
@@ -104,7 +108,31 @@ it("Add share holder", async function() {
     "percent": 30
   };
   const result = await request.addShareHolder(SCAFFOLD_ADDRESS, data);
-  console.log('share holder', result);
+
+  expect(result).to.be.a('object');
+
+  expect(result).not.to.have.property('error');
+});
+
+it("Update share holder", async function() {
+  const data = {
+    "percent": 40
+  };
+  const holderAddress = '0x33c2fb41aed258bf77c52674db552cf5625017d6'
+  const result = await request.updateShareHolder(SCAFFOLD_ADDRESS, holderAddress, data);
+
+  expect(result).to.be.a('object');
+
+  expect(result).not.to.have.property('error');
+});
+
+it("Remove share holder", async function() {
+  const data = {
+    "percent": 30
+  };
+  const holderAddress = '0x33c2fb41aed258bf77c52674db552cf5625017d6'
+  const result = await request.removeShareHolder(SCAFFOLD_ADDRESS, holderAddress, data);
+  console.log('removed share holder', result);
 
   expect(result).to.be.a('object');
 
