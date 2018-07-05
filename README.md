@@ -1,4 +1,4 @@
-#OpenJs
+# OpenJs
 
 OpenJs is a library for interactions with Open Platform.
 
