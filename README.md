@@ -2,14 +2,14 @@
 
 OpenJs is a library for interactions with Open Platform.
 
-##Installing
+## Installing
 Using npm:
 ```sh
 $ npm install openjs
 ```
-##Example
+## Example
 
-###Get started
+### Get started
 
 `open_key` - your open key
 
@@ -20,9 +20,9 @@ import OpenJs from 'openjs';
 const openApi = new OpenJs(open_key);
 ```
 
-###API methods
+### API methods
 
-####getScaffolds()
+#### getScaffolds()
 
 ```javascript
 openApi.getScaffolds()
@@ -50,7 +50,7 @@ const getScaffoldsFunction = async () => {
 };
 ```
 
-####getScaffold(scaffold_address `:String`)
+#### getScaffold(scaffold_address `:String`)
 
 ```javascript
 const getScaffoldFunction = async () => {
@@ -64,7 +64,7 @@ const getScaffoldFunction = async () => {
 };
 ```
 
-####getSummary(scaffold_address `:String`)
+#### getSummary(scaffold_address `:String`)
 
 ```javascript
 const getSummaryFunction = async () => {
@@ -78,7 +78,7 @@ const getSummaryFunction = async () => {
 };
 ```
 
-####getTransactions(scaffold_address `:String`)
+#### getTransactions(scaffold_address `:String`)
 
 ```javascript
 const getTransactionsFunction = async () => {
@@ -92,7 +92,7 @@ const getTransactionsFunction = async () => {
 };
 ```
 
-####setWebhook(scaffold_address `:String`, data `:Object`)
+#### setWebhook(scaffold_address `:String`, data `:Object`)
 
 ```javascript
 const setWebhookFunction = async () => {
@@ -109,7 +109,7 @@ const setWebhookFunction = async () => {
 };
 ```
 
-####deployScaffold(data `:Object`)
+#### deployScaffold(data `:Object`)
 
 ```javascript
 const deployScaffoldFunction = async () => {
@@ -151,7 +151,7 @@ const deactivateScaffoldFunction = async () => {
 };
 ```
 
-####getQuota()
+#### getQuota()
 
 ```javascript
 const getQuotaFunction = async () => {
@@ -164,7 +164,7 @@ const getQuotaFunction = async () => {
 };
 ```
 
-####addShareHolder(scaffold_address `:String`, data `:Object`)
+#### addShareHolder(scaffold_address `:String`, data `:Object`)
 
 ```javascript
 const addShareHolderFunction = async () => {
@@ -182,7 +182,7 @@ const addShareHolderFunction = async () => {
 };
 ```
 
-####updateShareHolder(scaffold_address `:String`, holder_address `:String`, data `:Object`)
+#### updateShareHolder(scaffold_address `:String`, holder_address `:String`, data `:Object`)
 
 ```javascript
 const updateShareHolderFunction = async () => {
@@ -200,7 +200,7 @@ const updateShareHolderFunction = async () => {
 };
 ```
 
-####removeShareHolder(scaffold_address `:String`, holder_address `:String`)
+#### removeShareHolder(scaffold_address `:String`, holder_address `:String`)
 
 ```javascript
 const removeShareHolderFunction = async () => {
