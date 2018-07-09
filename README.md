@@ -1,11 +1,11 @@
-# OpenJs
+# open-api-js-sdk
 
-OpenJs is a library for interactions with Open Platform.
+A library for interactions with Open Platform.
 
 ## Installing
 Using npm:
 ```sh
-$ npm install openjs
+$ npm install @open-platform/open-api-js-sdk
 ```
 ## Example
 
