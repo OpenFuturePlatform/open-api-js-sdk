@@ -5,7 +5,7 @@ stages:
 
 
 ######################
-# Build
+# Package
 ######################
 package-publish:
   stage: publish
