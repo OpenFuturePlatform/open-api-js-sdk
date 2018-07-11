@@ -12,5 +12,6 @@ package-publish:
   script:
     - npm install
     - echo -e ${NPMRC} > ~/.npmrc
+    - cat ~/.npmrc
     - npm run build
     - npm publish
