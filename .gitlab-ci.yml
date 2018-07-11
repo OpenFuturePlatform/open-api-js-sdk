@@ -1,0 +1,15 @@
+image: node:9-alpine
+
+stages:
+  - publish
+
+
+######################
+# Build
+######################
+package-publish:
+  stage: publish
+  script:
+    - npm run build
+    - npm version patch
+    - npm publish
