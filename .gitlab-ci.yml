@@ -14,3 +14,5 @@ package-publish:
     - echo -e ${NPMRC} > ~/.npmrc
     - npm run build
     - npm publish --access public
+  only:
+    - tags
