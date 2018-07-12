@@ -1,7 +1,24 @@
 image: node:9-alpine
 
 stages:
+  - build
   - publish
+
+
+######################
+# Build
+######################
+package-build:
+  stage: build
+  script:
+    - apk --no-cache add gettext
+    - export TAG=0.0.1
+    - envsubst '${TAG}' < package.json > package.json.new
+    - mv package.json.new package.json
+    - npm install
+    - npm run build
+  except:
+    - tags
 
 
 ######################
@@ -10,9 +27,14 @@ stages:
 package-publish:
   stage: publish
   script:
+    - apk --no-cache add gettext
+    - TAG=$(echo ${CI_COMMIT_REF_NAME} | sed "s/v//")
+    - export TAG=$TAG
+    - envsubst '${TAG}' < package.json > package.json.new
+    - mv package.json.new package.json
     - npm install
-    - echo -e ${NPMRC} > ~/.npmrc
     - npm run build
+    - echo -e ${NPMRC} > ~/.npmrc
     - npm publish --access public
   only:
     - tags
