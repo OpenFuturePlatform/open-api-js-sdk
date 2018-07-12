@@ -17,6 +17,7 @@ package-build:
     - mv package.json.new package.json
     - npm install
     - npm run build
+    - cat package.json
   except:
     - tags
 
