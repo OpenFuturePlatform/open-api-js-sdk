@@ -1,0 +1,32 @@
+{
+  "name": "@open-platform/open-api-js-sdk",
+  "description": "A library for interactions with Open Platform.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --mode development --env dev && webpack --mode production --env build",
+    "dev": "webpack --mode development --progress --colors --watch --env dev"
+  },
+  "main": "dist/main.js",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^4.19.1",
+    "eslint-loader": "^2.0.0",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.8",
+    "yargs": "^11.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenFuturePlatform/open-api-js-sdk.git"
+  }
+}
