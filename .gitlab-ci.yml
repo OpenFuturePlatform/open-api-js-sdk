@@ -12,8 +12,8 @@ package-build:
   stage: build
   script:
     - apk --no-cache add gettext
-    - export TAG=0.0.1
-    - envsubst '${TAG}' < package.json > package.json.new
+    - export VERSION=0.0.1
+    - envsubst '${VERSION}' < package.json > package.json.new
     - mv package.json.new package.json
     - npm install
     - npm run build
@@ -28,9 +28,9 @@ package-publish:
   stage: publish
   script:
     - apk --no-cache add gettext
-    - TAG=$(echo ${CI_COMMIT_REF_NAME} | sed "s/v//")
-    - export TAG=$TAG
-    - envsubst '${TAG}' < package.json > package.json.new
+    - VERSION=$(echo ${CI_COMMIT_REF_NAME} | sed "s/v//")
+    - export VERSION=$VERSION
+    - envsubst '${VERSION}' < package.json > package.json.new
     - mv package.json.new package.json
     - npm install
     - npm run build

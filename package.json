@@ -1,7 +1,7 @@
 {
   "name": "@open-platform/open-api-js-sdk",
   "description": "A library for interactions with Open Platform.",
-  "version": "$TAG",
+  "version": "${VERSION}",
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode development --env dev && webpack --mode production --env build",
