@@ -22,7 +22,7 @@ package-build:
 
 
 ######################
-# Package
+# Publish
 ######################
 package-publish:
   stage: publish
