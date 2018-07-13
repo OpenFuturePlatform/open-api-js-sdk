@@ -2,7 +2,7 @@ image: node:9-alpine
 
 stages:
   - build
-  - publish
+  - deploy
 
 
 ######################
@@ -22,10 +22,10 @@ package-build:
 
 
 ######################
-# Publish
+# Deploy
 ######################
-package-publish:
-  stage: publish
+package-deploy:
+  stage: deploy
   script:
     - apk --no-cache add gettext
     - VERSION=$(echo ${CI_COMMIT_REF_NAME} | sed "s/v//")
