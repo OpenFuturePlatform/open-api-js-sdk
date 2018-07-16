@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update shareholder API
 - Remove shareholder API
 - Get all transactions API
+- Tests
+- Errors constants
+- Improve methods
 
 [Unreleased]: https://github.com/OpenFuturePlatform/open-api-js-sdk/compare/master...sprint
 [1.0.0]: https://github.com/OpenFuturePlatform/open-api-js-sdk/compare/x...v1.0.0
