@@ -22,4 +22,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Improve methods
 
 [Unreleased]: https://github.com/OpenFuturePlatform/open-api-js-sdk/compare/master...sprint
-[1.0.0]: https://github.com/OpenFuturePlatform/open-api-js-sdk/compare/x...v1.0.0
+[1.0.0]: https://github.com/OpenFuturePlatform/open-api-js-sdk/compare/8482f934774c9ea5980a2e96efb346d0c95c1a54...v1.0.0
