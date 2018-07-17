@@ -1,8 +1,27 @@
 image: node:9-alpine
 
 stages:
+  - test
   - build
   - deploy
+
+before_script:
+  - apk --no-cache add gettext
+
+variables:
+  VERSION: 0.0.1
+
+
+######################
+# Tests
+######################
+package-tests:
+  stage: test
+  script:
+    - envsubst '${VERSION}' < package.json > package.json.new
+    - mv package.json.new package.json
+    - npm install
+    - npm run test
 
 
 ######################
@@ -11,12 +30,12 @@ stages:
 package-build:
   stage: build
   script:
-    - apk --no-cache add gettext
-    - export VERSION=0.0.1
     - envsubst '${VERSION}' < package.json > package.json.new
     - mv package.json.new package.json
     - npm install
     - npm run build
+  only:
+    - master
   except:
     - tags
 
@@ -27,7 +46,6 @@ package-build:
 package-deploy:
   stage: deploy
   script:
-    - apk --no-cache add gettext
     - VERSION=$(echo ${CI_COMMIT_REF_NAME} | sed "s/v//")
     - export VERSION=$VERSION
     - envsubst '${VERSION}' < package.json > package.json.new
