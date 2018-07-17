@@ -36,7 +36,7 @@ package-build:
     - npm run build
   artifacts:
     paths:
-      - build/libs/*.js
+      - dist/*.js
     expire_in: 1 day
   only:
     - master
