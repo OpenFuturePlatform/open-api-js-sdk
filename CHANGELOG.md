@@ -4,16 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.0.0] - 2018-07-16
 ### Added
-- Get list of Scaffolds API
-- Get Scaffold API
-- Get Summary API
-- Get Transactions API
-- Deploy Scaffold API
-- Deactivate Scaffold API
-- Set Webhook API
-- Get Quota API
-- Add Share holder API
-- Update Share holder API
-- Remove Share holder API
+- Get all scaffolds API
+- Get scaffold API
+- Deploy scaffold API
+- Set scaffold webhook API
+- Get scaffold summary API
+- Deactivate scaffold API
+- Get scaffold quota API
+- Add shareholder API
+- Update shareholder API
+- Remove shareholder API
+- Get all transactions API
+- Tests
+- Errors constants
+- Improve methods
+
+[Unreleased]: https://github.com/OpenFuturePlatform/open-api-js-sdk/compare/master...sprint
+[1.0.0]: https://github.com/OpenFuturePlatform/open-api-js-sdk/compare/x...v1.0.0

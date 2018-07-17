@@ -13,46 +13,58 @@ export default class OpenJs {
       const result = await this.api.get(Paths.Scaffold.GetAll);
       return result.data;
     } catch (error) {
-      return error.response.data;
+      if (error.response && error.response.data) {
+        return error.response.data
+      }
+      return error;
     }
   }
 
   async getScaffold(address) {
-    const errors = addressValidation(address);
-    if (errors.length !==0) {
-      return errors;
+    const error = addressValidation(address);
+    if (error) {
+      return new Error(error);
     };
     try {
       const result = await this.api.get(Paths.Scaffold.GetItem(address));
       return result.data;
     } catch (error) {
-      return error.response.data;
+      if (error.response && error.response.data) {
+        return error.response.data
+      }
+      return error;
     }
   }
 
   async getSummary(address) {
-    const errors = addressValidation(address);
-    if (errors.length !==0) {
-      return errors;
+    const error = addressValidation(address);
+    if (error) {
+      return new Error(error);
     };
     try {
       const result = await this.api.get(Paths.Scaffold.GetSummary(address));
       return result.data;
     } catch (error) {
-      return error.response.data;
+      if (error.response && error.response.data) {
+        return error.response.data
+      }
+      return error;
     }
   }
 
   async getTransactions(address) {
-    const errors = addressValidation(address);
-    if (errors.length !==0) {
-      return errors;
+    const error = addressValidation(address);
+    if (error) {
+      return new Error(error);
     };
     try {
       const result = await this.api.get(Paths.Scaffold.GetTransactions(address));
       return result.data;
     } catch (error) {
-      return error.response.data;
+      if (error.response && error.response.data) {
+        return error.response.data
+      }
+      return error;
     }
   }
 
@@ -65,27 +77,33 @@ export default class OpenJs {
       });
       return result.data;
     } catch (error) {
-      return error.response.data;
+      if (error.response && error.response.data) {
+        return error.response.data
+      }
+      return error;
     }
   }
 
   async deactivateScaffold(address) {
-    const errors = addressValidation(address);
-    if (errors.length !==0) {
-      return errors;
+    const error = addressValidation(address);
+    if (error) {
+      return new Error(error);
     };
     try {
       const result = await this.api.delete(Paths.Scaffold.Deactivate(address));
       return result.data;
     } catch (error) {
-      return error.response.data;
+      if (error.response && error.response.data) {
+        return error.response.data
+      }
+      return error;
     }
   }
 
   async setWebhook(address, data) {
-    const errors = addressValidation(address);
-    if (errors.length !==0) {
-      return errors;
+    const error = addressValidation(address);
+    if (error) {
+      return new Error(error);
     };
     try {
       const result = await this.api.patch(Paths.Scaffold.SetWebhook(address), data, {
@@ -95,7 +113,10 @@ export default class OpenJs {
       });
       return result.data;
     } catch (error) {
-      return error.response.data;
+      if (error.response && error.response.data) {
+        return error.response.data
+      }
+      return error;
     }
   }
 
@@ -104,14 +125,17 @@ export default class OpenJs {
       const result = await this.api.get(Paths.Scaffold.GetQuota);
       return result.data;
     } catch (error) {
-      return error.response.data;
+      if (error.response && error.response.data) {
+        return error.response.data
+      }
+      return error;
     }
   }
 
   async addShareHolder(address, data) {
-    const errors = addressValidation(address);
-    if (errors.length !==0) {
-      return errors;
+    const error = addressValidation(address);
+    if (error) {
+      return new Error(error);
     };
     try {
       const result = await this.api.post(Paths.ShareHolder.Add(address), data, {
@@ -121,15 +145,21 @@ export default class OpenJs {
       });
       return result.data;
     } catch (error) {
-      return error.response.data;
+      if (error.response && error.response.data) {
+        return error.response.data
+      }
+      return error;
     }
   }
 
   async updateShareHolder(address, holderAddress, data) {
-    const addressErrors = addressValidation(address);
-    const holderAddressErrors = addressValidation(holderAddress);
-    if (addressErrors.length !==0 || holderAddressErrors.length !==0) {
-      return [...addressErrors, ...holderAddressErrors];
+    let error = addressValidation(address);
+    if (error) {
+      return new Error(error);
+    };
+    error = addressValidation(holderAddress);
+    if (error) {
+      return new Error(error);
     };
     try {
       const result = await this.api.put(Paths.ShareHolder.Update(address, holderAddress), data, {
@@ -139,21 +169,31 @@ export default class OpenJs {
       });
       return result.data;
     } catch (error) {
-      return error.response.data;
+      if (error.response && error.response.data) {
+        return error.response.data
+      }
+      return error;
     }
   }
 
   async removeShareHolder(address, holderAddress) {
-    const addressErrors = addressValidation(address);
-    const holderAddressErrors = addressValidation(holderAddress);
-    if (addressErrors.length !==0 || holderAddressErrors.length !==0) {
-      return [...addressErrors, ...holderAddressErrors];
+    let error = addressValidation(address);
+    if (error) {
+      return new Error(error);
+    };
+    error = addressValidation(holderAddress);
+    if (error) {
+      return new Error(error);
     };
     try {
       const result = await this.api.delete(Paths.ShareHolder.Remove(address, holderAddress));
       return result.data;
     } catch (error) {
-      return error.response.data;
+      if (error.response && error.response.data) {
+        return error.response.data
+      }
+      return error;
     }
   }
+
 }

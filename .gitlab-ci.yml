@@ -1,0 +1,40 @@
+image: node:9-alpine
+
+stages:
+  - build
+  - deploy
+
+
+######################
+# Build
+######################
+package-build:
+  stage: build
+  script:
+    - apk --no-cache add gettext
+    - export VERSION=0.0.1
+    - envsubst '${VERSION}' < package.json > package.json.new
+    - mv package.json.new package.json
+    - npm install
+    - npm run build
+  except:
+    - tags
+
+
+######################
+# Deploy
+######################
+package-deploy:
+  stage: deploy
+  script:
+    - apk --no-cache add gettext
+    - VERSION=$(echo ${CI_COMMIT_REF_NAME} | sed "s/v//")
+    - export VERSION=$VERSION
+    - envsubst '${VERSION}' < package.json > package.json.new
+    - mv package.json.new package.json
+    - npm install
+    - npm run build
+    - echo -e ${NPMRC} > ~/.npmrc
+    - npm publish --access public
+  only:
+    - tags
