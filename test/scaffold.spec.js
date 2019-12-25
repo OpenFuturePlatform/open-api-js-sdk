@@ -11,16 +11,16 @@ const SUMMARY_MOCK = require('./mock/summary');
 const TRANSACTION_MOCK = require('./mock/transaction');
 const QUOTA_MOCK = require('./mock/quota');
 
-describe('Scaffolds tests', () => {
-  it('Get all scaffolds', () => {
+describe('Ethereum scaffolds tests', () => {
+  it('Get all ethereum scaffolds', () => {
     nock(baseUrl)
-      .get('/scaffolds')
+      .get('/ethereum-scaffolds')
       .reply(200, {
         totalCount: 1,
         list: [SCAFFOLD_MOCK]
       });
 
-    return api.getScaffolds()
+    return api.getEthereumScaffolds()
       .then(response => {
         expect(response).to.be.a('object');
         expect(response).to.have.property('totalCount');
@@ -34,39 +34,39 @@ describe('Scaffolds tests', () => {
       });
   });
 
-  it('Get scaffold', () => {
+  it('Get ethereum scaffold', () => {
     nock(baseUrl)
-      .get(`/scaffolds/${scaffoldAddress}`)
+      .get(`/ethereum-scaffolds/${scaffoldAddress}`)
       .reply(200, SCAFFOLD_MOCK);
 
-    return api.getScaffold(scaffoldAddress)
+    return api.getEthereumScaffold(scaffoldAddress)
               .then(response => {
                 expect(response).to.be.a('object');
                 expect(response).to.deep.equal(SCAFFOLD_MOCK);
               });
   });
 
-  it('Get summary', () => {
+  it('Get ethereum summary', () => {
     nock(baseUrl)
-      .get(`/scaffolds/${scaffoldAddress}/summary`)
+      .get(`/ethereum-scaffolds/${scaffoldAddress}/summary`)
       .reply(200, SUMMARY_MOCK);
 
-    return api.getSummary(scaffoldAddress)
+    return api.getEthereumSummary(scaffoldAddress)
               .then(response => {
                 expect(response).to.be.a('object');
                 expect(response).to.deep.equal(SUMMARY_MOCK);
               });
   });
 
-  it('Get transactions', () => {
+  it('Get ethereum transactions', () => {
     nock(baseUrl)
-      .get(`/scaffolds/${scaffoldAddress}/transactions`)
+      .get(`/ethereum-scaffolds/${scaffoldAddress}/transactions`)
       .reply(200, {
         totalCount: 1,
         list: [TRANSACTION_MOCK]
       });
 
-    return api.getTransactions(scaffoldAddress)
+    return api.getEthereumTransactions(scaffoldAddress)
               .then(response => {
                 expect(response).to.be.a('object');
                 expect(response).to.have.property('totalCount');
@@ -80,7 +80,7 @@ describe('Scaffolds tests', () => {
               });
   });
 
-  it('Deploy Scaffold', () => {
+  it('Deploy ethereum scaffold', () => {
     const data = {
       openKey: "op_pk_7395a0fa-d39f-4f52-ab08-dsfdsf343254",
       developerAddress: "0xDc29484cc9C02Ee01015f33BcA8bBb5C7293Fb54",
@@ -98,10 +98,10 @@ describe('Scaffolds tests', () => {
     };
 
     nock(baseUrl)
-      .post('/scaffolds/doDeploy', data)
+      .post('/ethereum-scaffolds/doDeploy', data)
       .reply(200, SCAFFOLD_MOCK);
 
-    return api.deployScaffold(data)
+    return api.deployEthereumScaffold(data)
               .then(response => {
                 expect(response).to.be.a('object');
 
@@ -111,12 +111,12 @@ describe('Scaffolds tests', () => {
               });
   });
 
-  it('Deactivate Scaffold', () => {
+  it('Deactivate ethereum scaffold', () => {
     nock(baseUrl)
-      .delete(`/scaffolds/${scaffoldAddress}`)
+      .delete(`/ethereum-scaffolds/${scaffoldAddress}`)
       .reply(200, SUMMARY_MOCK);
 
-    return api.deactivateScaffold(scaffoldAddress)
+    return api.deactivateEthereumScaffold(scaffoldAddress)
               .then(response => {
                 expect(response).to.be.a('object');
 
@@ -126,15 +126,15 @@ describe('Scaffolds tests', () => {
               });
   });
 
-  it('Set Webhook', () => {
+  it('Set ethereum scaffold webhook', () => {
     const data = {
       webHook: 'https://zensoft.io'
     };
     nock(baseUrl)
-      .patch(`/scaffolds/${scaffoldAddress}`, data)
+      .patch(`/ethereum-scaffolds/${scaffoldAddress}`, data)
       .reply(200, SCAFFOLD_MOCK);
 
-    return api.setWebhook(scaffoldAddress, data)
+    return api.setEthereumScaffoldWebhook(scaffoldAddress, data)
               .then(response => {
                 expect(response).to.be.a('object');
 
@@ -144,12 +144,12 @@ describe('Scaffolds tests', () => {
               });
   });
 
-  it('Get Quota', () => {
+  it('Get ethereum scaffold quota', () => {
     nock(baseUrl)
-      .get('/scaffolds/quota')
+      .get('/ethereum-scaffolds/quota')
       .reply(200, QUOTA_MOCK);
 
-    return api.getQuota()
+    return api.getEthereumScaffoldQuota()
               .then(response => {
                 expect(response).to.be.a('object');
 

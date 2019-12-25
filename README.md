@@ -22,10 +22,10 @@ const openApi = new OpenJs(open_key);
 
 ### API methods
 
-#### getScaffolds()
+#### getEthereumScaffolds()
 
 ```javascript
-openApi.getScaffolds()
+openApi.getEthereumScaffolds()
   .then((response) => {
     // handle success
     console.log(response);
@@ -40,9 +40,9 @@ openApi.getScaffolds()
   
 // Add the 'async' keyword to your outer function/method to use async/await.
 
-const getScaffoldsFunction = async () => {
+const getEthereumScaffoldsFunction = async () => {
   try {
-    const response = await openApi.getScaffolds();
+    const response = await openApi.getEthereumScaffolds();
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -50,13 +50,13 @@ const getScaffoldsFunction = async () => {
 };
 ```
 
-#### getScaffold(scaffold_address `:String`)
+#### getEthereumScaffold(scaffold_address `:String`)
 
 ```javascript
-const getScaffoldFunction = async () => {
+const getEthereumScaffoldFunction = async () => {
   const scaffold_address = '0x0000000000000000000000000000000000000000'; // an address of the scaffold (example)
   try {
-    const response = await openApi.getScaffold(scaffold_address);
+    const response = await openApi.getEthereumScaffold(scaffold_address);
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -64,13 +64,13 @@ const getScaffoldFunction = async () => {
 };
 ```
 
-#### getSummary(scaffold_address `:String`)
+#### getEthereumSummary(scaffold_address `:String`)
 
 ```javascript
-const getSummaryFunction = async () => {
+const getEthereumSummaryFunction = async () => {
   const scaffold_address = '0x0000000000000000000000000000000000000000'; // an address of the scaffold (example)
   try {
-    const response = await openApi.getSummary(scaffold_address);
+    const response = await openApi.getEthereumSummary(scaffold_address);
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -78,13 +78,13 @@ const getSummaryFunction = async () => {
 };
 ```
 
-#### getTransactions(scaffold_address `:String`)
+#### getEthereumTransactions(scaffold_address `:String`)
 
 ```javascript
-const getTransactionsFunction = async () => {
+const getEthereumTransactionsFunction = async () => {
   const scaffold_address = '0x0000000000000000000000000000000000000000'; // an address of the scaffold (example)
   try {
-    const response = await openApi.getTransactions(scaffold_address);
+    const response = await openApi.getEthereumTransactions(scaffold_address);
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -92,16 +92,16 @@ const getTransactionsFunction = async () => {
 };
 ```
 
-#### setWebhook(scaffold_address `:String`, data `:Object`)
+#### setEthereumScaffoldWebhook(scaffold_address `:String`, data `:Object`)
 
 ```javascript
-const setWebhookFunction = async () => {
+const setEthereumScaffoldWebhookFunction = async () => {
   const scaffold_address = '0x0000000000000000000000000000000000000000'; // an address of the scaffold (example)
   const data = {
     webHook: 'https://example.com'
   };
   try {
-    const response = await openApi.setWebhook(scaffold_address, data);
+    const response = await openApi.setEthereumScaffoldWebhook(scaffold_address, data);
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -109,10 +109,10 @@ const setWebhookFunction = async () => {
 };
 ```
 
-#### deployScaffold(data `:Object`)
+#### deployEthereumScaffold(data `:Object`)
 
 ```javascript
-const deployScaffoldFunction = async () => {
+const deployEthereumScaffoldFunction = async () => {
   const data = {
     openKey: open_key,
     developerAddress: '0x0000000000000000000000000000000000000000',
@@ -129,7 +129,7 @@ const deployScaffoldFunction = async () => {
     ]
   };
   try {
-    const response = await openApi.deployScaffold(data);
+    const response = await openApi.deployEthereumScaffold(data);
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -137,13 +137,13 @@ const deployScaffoldFunction = async () => {
 };
 ```
 
-#### deactivateScaffold(scaffold_address: `:String`)
+#### deactivateEthereumScaffold(scaffold_address: `:String`)
 
 ```javascript
-const deactivateScaffoldFunction = async () => {
+const deactivateEthereumScaffoldFunction = async () => {
   const scaffold_address = '0x0000000000000000000000000000000000000000'; // an address of the scaffold (example)
   try {
-    const response = await openApi.deactivateScaffold(scaffold_address);
+    const response = await openApi.deactivateEthereumScaffold(scaffold_address);
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -151,12 +151,12 @@ const deactivateScaffoldFunction = async () => {
 };
 ```
 
-#### getQuota()
+#### getEthereumScaffoldQuota()
 
 ```javascript
-const getQuotaFunction = async () => {
+const getEthereumScaffoldQuotaFunction = async () => {
   try {
-    const response = await openApi.getQuota();
+    const response = await openApi.getEthereumScaffoldQuota();
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -164,17 +164,17 @@ const getQuotaFunction = async () => {
 };
 ```
 
-#### addShareHolder(scaffold_address `:String`, data `:Object`)
+#### addEthereumShareHolder(scaffold_address `:String`, data `:Object`)
 
 ```javascript
-const addShareHolderFunction = async () => {
+const addEthereumShareHolderFunction = async () => {
   const scaffold_address = '0x0000000000000000000000000000000000000000'; // an address of the scaffold (example)
   const data = {
     address: '0x0000000000000000000000000000000000000000',
     percent: 30
   };
   try {
-    const response = await openApi.addShareHolder(scaffold_address, data);
+    const response = await openApi.addEthereumShareHolder(scaffold_address, data);
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -182,17 +182,17 @@ const addShareHolderFunction = async () => {
 };
 ```
 
-#### updateShareHolder(scaffold_address `:String`, holder_address `:String`, data `:Object`)
+#### updateEthereumShareHolder(scaffold_address `:String`, holder_address `:String`, data `:Object`)
 
 ```javascript
-const updateShareHolderFunction = async () => {
+const updateEthereumShareHolderFunction = async () => {
   const scaffold_address = '0x0000000000000000000000000000000000000000'; // an address of the scaffold (example)
   const holder_address = '0x0000000000000000000000000000000000000000'; // an address of the scaffold (example)
   const data = {
     percent: 30
   };
   try {
-    const response = await openApi.updateShareHolder(scaffold_address, holder_address, data);
+    const response = await openApi.updateEthereumShareHolder(scaffold_address, holder_address, data);
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -200,14 +200,14 @@ const updateShareHolderFunction = async () => {
 };
 ```
 
-#### removeShareHolder(scaffold_address `:String`, holder_address `:String`)
+#### removeEthereumShareHolder(scaffold_address `:String`, holder_address `:String`)
 
 ```javascript
-const removeShareHolderFunction = async () => {
+const removeEthereumShareHolderFunction = async () => {
   const scaffold_address = '0x0000000000000000000000000000000000000000'; // an address of the scaffold (example)
   const holder_address = '0x0000000000000000000000000000000000000000'; // an address of the scaffold (example)
   try {
-    const response = await openApi.removeShareHolder(scaffold_address, holder_address, data);
+    const response = await openApi.removeEthereumShareHolder(scaffold_address, holder_address, data);
     console.log(response);
   } catch (error) {
     console.error(error);
