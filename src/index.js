@@ -8,9 +8,9 @@ export default class OpenJs {
     this.api = api(openKey);
   }
 
-  async getScaffolds() {
+  async getEthereumScaffolds() {
     try {
-      const result = await this.api.get(Paths.Scaffold.GetAll);
+      const result = await this.api.get(Paths.EthereumScaffold.GetAll);
       return result.data;
     } catch (error) {
       if (error.response && error.response.data) {
@@ -20,13 +20,13 @@ export default class OpenJs {
     }
   }
 
-  async getScaffold(address) {
+  async getEthereumScaffold(address) {
     const error = addressValidation(address);
     if (error) {
       return new Error(error);
     };
     try {
-      const result = await this.api.get(Paths.Scaffold.GetItem(address));
+      const result = await this.api.get(Paths.EthereumScaffold.GetItem(address));
       return result.data;
     } catch (error) {
       if (error.response && error.response.data) {
@@ -36,13 +36,13 @@ export default class OpenJs {
     }
   }
 
-  async getSummary(address) {
+  async getEthereumSummary(address) {
     const error = addressValidation(address);
     if (error) {
       return new Error(error);
     };
     try {
-      const result = await this.api.get(Paths.Scaffold.GetSummary(address));
+      const result = await this.api.get(Paths.EthereumScaffold.GetSummary(address));
       return result.data;
     } catch (error) {
       if (error.response && error.response.data) {
@@ -52,13 +52,13 @@ export default class OpenJs {
     }
   }
 
-  async getTransactions(address) {
+  async getEthereumTransactions(address) {
     const error = addressValidation(address);
     if (error) {
       return new Error(error);
     };
     try {
-      const result = await this.api.get(Paths.Scaffold.GetTransactions(address));
+      const result = await this.api.get(Paths.EthereumScaffold.GetTransactions(address));
       return result.data;
     } catch (error) {
       if (error.response && error.response.data) {
@@ -68,9 +68,9 @@ export default class OpenJs {
     }
   }
 
-  async deployScaffold(data) {
+  async deployEthereumScaffold(data) {
     try {
-      const result = await this.api.post(Paths.Scaffold.Deploy, data, {
+      const result = await this.api.post(Paths.EthereumScaffold.Deploy, data, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -84,13 +84,13 @@ export default class OpenJs {
     }
   }
 
-  async deactivateScaffold(address) {
+  async deactivateEthereumScaffold(address) {
     const error = addressValidation(address);
     if (error) {
       return new Error(error);
     };
     try {
-      const result = await this.api.delete(Paths.Scaffold.Deactivate(address));
+      const result = await this.api.delete(Paths.EthereumScaffold.Deactivate(address));
       return result.data;
     } catch (error) {
       if (error.response && error.response.data) {
@@ -100,13 +100,13 @@ export default class OpenJs {
     }
   }
 
-  async setWebhook(address, data) {
+  async setEthereumScaffoldWebhook(address, data) {
     const error = addressValidation(address);
     if (error) {
       return new Error(error);
     };
     try {
-      const result = await this.api.patch(Paths.Scaffold.SetWebhook(address), data, {
+      const result = await this.api.patch(Paths.EthereumScaffold.SetWebhook(address), data, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -120,9 +120,9 @@ export default class OpenJs {
     }
   }
 
-  async getQuota() {
+  async getEthereumScaffoldQuota() {
     try {
-      const result = await this.api.get(Paths.Scaffold.GetQuota);
+      const result = await this.api.get(Paths.EthereumScaffold.GetQuota);
       return result.data;
     } catch (error) {
       if (error.response && error.response.data) {
@@ -132,13 +132,13 @@ export default class OpenJs {
     }
   }
 
-  async addShareHolder(address, data) {
+  async addEthereumShareHolder(address, data) {
     const error = addressValidation(address);
     if (error) {
       return new Error(error);
     };
     try {
-      const result = await this.api.post(Paths.ShareHolder.Add(address), data, {
+      const result = await this.api.post(Paths.EthereumShareHolder.Add(address), data, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -152,7 +152,7 @@ export default class OpenJs {
     }
   }
 
-  async updateShareHolder(address, holderAddress, data) {
+  async updateEthereumShareHolder(address, holderAddress, data) {
     let error = addressValidation(address);
     if (error) {
       return new Error(error);
@@ -162,7 +162,7 @@ export default class OpenJs {
       return new Error(error);
     };
     try {
-      const result = await this.api.put(Paths.ShareHolder.Update(address, holderAddress), data, {
+      const result = await this.api.put(Paths.EthereumShareHolder.Update(address, holderAddress), data, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -176,7 +176,7 @@ export default class OpenJs {
     }
   }
 
-  async removeShareHolder(address, holderAddress) {
+  async removeEthereumShareHolder(address, holderAddress) {
     let error = addressValidation(address);
     if (error) {
       return new Error(error);
@@ -186,7 +186,7 @@ export default class OpenJs {
       return new Error(error);
     };
     try {
-      const result = await this.api.delete(Paths.ShareHolder.Remove(address, holderAddress));
+      const result = await this.api.delete(Paths.EthereumShareHolder.Remove(address, holderAddress));
       return result.data;
     } catch (error) {
       if (error.response && error.response.data) {
